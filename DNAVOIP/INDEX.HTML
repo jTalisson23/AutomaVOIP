@@ -3,73 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <title>Ramais DNA - Laboratório</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0d47a1',
+            secondary: '#1565c0',
+          }
+        }
+      }
+    }
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f0f2f5;
-      padding: 40px;
-      margin: 0;
-    }
-    h1 {
-      text-align: center;
-      color: #0d47a1;
-      margin-bottom: 30px;
-    }
-    .container {
-      max-width: 1000px;
-      margin: auto;
-    }
-    .search-box {
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      margin-bottom: 30px;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
-    }
-    .setor {
-      background: #fff;
-      border-left: 6px solid #0d47a1;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-      margin-bottom: 25px;
-    }
-    .setor h2 {
-      margin-top: 0;
-      font-size: 1.3em;
-      color: #0d47a1;
-    }
-    .ramal {
-      margin: 8px 0;
-      font-size: 1.05em;
-      display: flex;
-      align-items: center;
-    }
-    .ramal i {
-      color: #1565c0;
-      margin-right: 10px;
-    }
-    .ramal a {
-      color: #1565c0;
-      font-weight: bold;
-      text-decoration: none;
-    }
-    .ramal a:hover {
-      text-decoration: underline;
-    }
-  </style>
 </head>
-<body>
-  <h1>Lista de Ramais - DNA Laboratório</h1>
-  <div class="container">
-    <input type="text" id="searchInput" class="search-box" placeholder="Buscar por nome, setor ou ramal..." />
+<body class="bg-gray-100 text-gray-800 font-sans p-6">
 
-    <div id="ramaisContainer">
-      <!-- Aqui os setores e ramais aparecerão -->
+  <h1 class="text-3xl font-bold text-primary text-center mb-8">Lista de Ramais - DNA Laboratório</h1>
+
+  <div class="max-w-5xl mx-auto">
+    <input type="text" id="searchInput" placeholder="Buscar por nome, setor ou ramal..."
+      class="w-full p-3 mb-8 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary" />
+
+    <div id="ramaisContainer" class="space-y-6">
+      <!-- Os ramais serão inseridos aqui -->
     </div>
   </div>
 
@@ -108,6 +66,13 @@
         ]
       },
       {
+        setor: "Financeiro",
+        ramais: [
+          { numero: "7137", nome: "Rebeca" },
+          { numero: "7133", nome: "Rafaela" },
+        ]
+      },
+      { 
         setor: "PITUBA - Consultórios e Técnicos",
         ramais: [
           { numero: "7407", nome: "Assessoria médica" },
@@ -128,6 +93,15 @@
           { numero: "7550", nome: "Patologia - Coordenação" }
         ]
       },
+
+      {
+        setor: "RH",
+        ramais: [
+          { numero: "7145" , nome: "Fernanda"},
+          { numero: "SN" , nome: "Carla"},
+          ]
+      },
+
       {
         setor: "PITUBA - Amazonas / Telefonia",
         ramais: [
@@ -141,7 +115,7 @@
           { numero: "1043", nome: "Coleta Domiciliar" },
           { numero: "1037", nome: "Coleta Domiciliar" },
           { numero: "1072", nome: "Carine Siqueira" },
-          { numero: "SAC 1 a 14", nome: "Ingenium" },
+          { numero: "SAC 1 a 14", nome: "Ingenium" }
         ]
       }
     ];
@@ -151,21 +125,21 @@
     function renderRamais(data) {
       container.innerHTML = "";
       data.forEach(setor => {
-        let card = document.createElement("div");
-        card.className = "setor";
-        let title = document.createElement("h2");
+        const card = document.createElement("div");
+        card.className = "bg-white border-l-4 border-primary p-5 rounded-lg shadow";
+
+        const title = document.createElement("h2");
+        title.className = "text-xl font-bold text-primary mb-3";
         title.textContent = setor.setor;
         card.appendChild(title);
 
         setor.ramais.forEach(r => {
-          let div = document.createElement("div");
-          div.className = "ramal";
-          if (r.numero.includes("SAC")) {
-            div.innerHTML = `<i class="fas fa-phone-alt"></i><span>${r.numero} - ${r.nome}</span>`;
-          } else {
-            div.innerHTML = `<i class="fas fa-phone-alt"></i><a href="sip:${r.numero}@192.168.200.236">${r.numero} - ${r.nome}</a>`;
-          }
-          card.appendChild(div);
+          const linha = document.createElement("div");
+          linha.className = "flex items-center text-sm text-gray-700 mb-2";
+          linha.innerHTML = r.numero.includes("SAC")
+            ? `<i class="fas fa-phone-alt text-secondary mr-2"></i><span>${r.numero} - ${r.nome}</span>`
+            : `<i class="fas fa-phone-alt text-secondary mr-2"></i><a href="sip:${r.numero}@192.168.200.236" class="font-medium hover:underline">${r.numero} - ${r.nome}</a>`;
+          card.appendChild(linha);
         });
 
         container.appendChild(card);
@@ -174,17 +148,15 @@
 
     document.getElementById("searchInput").addEventListener("input", function () {
       const query = this.value.toLowerCase();
-      const filtered = setores.map(setor => {
-        return {
-          setor: setor.setor,
-          ramais: setor.ramais.filter(r =>
-            r.nome.toLowerCase().includes(query) ||
-            r.numero.toLowerCase().includes(query) ||
-            setor.setor.toLowerCase().includes(query)
-          )
-        };
-      }).filter(s => s.ramais.length > 0);
-      renderRamais(filtered);
+      const filtrado = setores.map(setor => ({
+        setor: setor.setor,
+        ramais: setor.ramais.filter(r =>
+          r.nome.toLowerCase().includes(query) ||
+          r.numero.toLowerCase().includes(query) ||
+          setor.setor.toLowerCase().includes(query)
+        )
+      })).filter(s => s.ramais.length > 0);
+      renderRamais(filtrado);
     });
 
     renderRamais(setores);
