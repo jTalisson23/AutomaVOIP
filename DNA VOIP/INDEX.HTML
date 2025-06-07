@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ramais DNA - Laboratório</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f0f2f5;
+      padding: 40px;
+      margin: 0;
+    }
+    h1 {
+      text-align: center;
+      color: #0d47a1;
+      margin-bottom: 30px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+    .search-box {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 30px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    }
+    .setor {
+      background: #fff;
+      border-left: 6px solid #0d47a1;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      margin-bottom: 25px;
+    }
+    .setor h2 {
+      margin-top: 0;
+      font-size: 1.3em;
+      color: #0d47a1;
+    }
+    .ramal {
+      margin: 8px 0;
+      font-size: 1.05em;
+      display: flex;
+      align-items: center;
+    }
+    .ramal i {
+      color: #1565c0;
+      margin-right: 10px;
+    }
+    .ramal a {
+      color: #1565c0;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .ramal a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lista de Ramais - DNA Laboratório</h1>
+  <div class="container">
+    <input type="text" id="searchInput" class="search-box" placeholder="Buscar por nome, setor ou ramal..." />
+
+    <div id="ramaisContainer">
+      <!-- Aqui os setores e ramais aparecerão -->
+    </div>
+  </div>
+
+  <script>
+    const setores = [
+      {
+        setor: "Biologia Molecular",
+        ramais: [
+          { numero: "7119", nome: "Coordenação Paula/Layla" },
+          { numero: "7103", nome: "Assessoria médica-científica" },
+          { numero: "7154", nome: "Biologia Molecular (Rastreio)" }
+        ]
+      },
+      {
+        setor: "TI",
+        ramais: [
+          { numero: "7115", nome: "Jardel" },
+          { numero: "7116", nome: "Rafael" },
+          { numero: "7117", nome: "Talisson" },
+          { numero: "7144", nome: "Cristiane" },
+          { numero: "7114", nome: "Danillo" }
+        ]
+      },
+      {
+        setor: "ARACAJU",
+        ramais: [
+          { numero: "20", nome: "Call Center" },
+          { numero: "23", nome: "ADM/Faturamento (Julio)" },
+          { numero: "24", nome: "Consultório 01 (Dr Emerson)" },
+          { numero: "25", nome: "Consultório 02 (Dra Julia/Elaine)" },
+          { numero: "26", nome: "Gerência (Luciana)" },
+          { numero: "28", nome: "Recepção (Marcela)" },
+          { numero: "29", nome: "Recepção (Geise)" },
+          { numero: "30", nome: "Recepção (Wilna)" },
+          { numero: "31", nome: "Área Técnica" }
+        ]
+      },
+      {
+        setor: "PITUBA - Consultórios e Técnicos",
+        ramais: [
+          { numero: "7407", nome: "Assessoria médica" },
+          { numero: "7419", nome: "Bioquímica" },
+          { numero: "7418", nome: "Hematologia" },
+          { numero: "7421", nome: "Hormônio / Bancada" },
+          { numero: "7424", nome: "Uroanálise" },
+          { numero: "7425", nome: "Clinin" },
+          { numero: "7426", nome: "Clinin" },
+          { numero: "7420", nome: "Gerência / Área Técnica (Isabel)" },
+          { numero: "7411", nome: "Microbiologia" },
+          { numero: "7402", nome: "Portaria" },
+          { numero: "7400", nome: "Recepção" },
+          { numero: "7401", nome: "Recepção" },
+          { numero: "7412", nome: "CDA" },
+          { numero: "7409", nome: "Triagem/Pezinho (Lorena)" },
+          { numero: "7410", nome: "Patologia 2" },
+          { numero: "7550", nome: "Patologia - Coordenação" }
+        ]
+      },
+      {
+        setor: "PITUBA - Amazonas / Telefonia",
+        ramais: [
+          { numero: "7422", nome: "Edna" },
+          { numero: "7404", nome: "Consultório Médico 01" },
+          { numero: "7405", nome: "Consultório Médico 02" },
+          { numero: "7516", nome: "Vacinas" },
+          { numero: "7540", nome: "Cassiana (Qualidade)" },
+          { numero: "7541", nome: "Isabele (Qualidade)" },
+          { numero: "1071", nome: "Coordenação (Coleta Domiciliar)" },
+          { numero: "1043", nome: "Coleta Domiciliar" },
+          { numero: "1037", nome: "Coleta Domiciliar" },
+          { numero: "1072", nome: "Carine Siqueira" },
+          { numero: "SAC 1 a 14", nome: "Ingenium" },
+        ]
+      }
+    ];
+
+    const container = document.getElementById("ramaisContainer");
+
+    function renderRamais(data) {
+      container.innerHTML = "";
+      data.forEach(setor => {
+        let card = document.createElement("div");
+        card.className = "setor";
+        let title = document.createElement("h2");
+        title.textContent = setor.setor;
+        card.appendChild(title);
+
+        setor.ramais.forEach(r => {
+          let div = document.createElement("div");
+          div.className = "ramal";
+          if (r.numero.includes("SAC")) {
+            div.innerHTML = `<i class="fas fa-phone-alt"></i><span>${r.numero} - ${r.nome}</span>`;
+          } else {
+            div.innerHTML = `<i class="fas fa-phone-alt"></i><a href="sip:${r.numero}@192.168.200.236">${r.numero} - ${r.nome}</a>`;
+          }
+          card.appendChild(div);
+        });
+
+        container.appendChild(card);
+      });
+    }
+
+    document.getElementById("searchInput").addEventListener("input", function () {
+      const query = this.value.toLowerCase();
+      const filtered = setores.map(setor => {
+        return {
+          setor: setor.setor,
+          ramais: setor.ramais.filter(r =>
+            r.nome.toLowerCase().includes(query) ||
+            r.numero.toLowerCase().includes(query) ||
+            setor.setor.toLowerCase().includes(query)
+          )
+        };
+      }).filter(s => s.ramais.length > 0);
+      renderRamais(filtered);
+    });
+
+    renderRamais(setores);
+  </script>
+</body>
+</html>
