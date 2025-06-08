@@ -2,34 +2,53 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ramais DNA - Laboratório</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
           colors: {
             primary: '#0d47a1',
             secondary: '#1565c0',
+            important: '#d32f2f',
           }
         }
       }
     }
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans p-6">
+
+  <div class="flex justify-center mb-4">
+    <img src="logo.png" alt="Logomarca DNA" class="h-16">
+  </div>
 
   <h1 class="text-3xl font-bold text-primary text-center mb-8">Lista de Ramais - DNA Laboratório</h1>
 
   <div class="max-w-5xl mx-auto">
-    <input type="text" id="searchInput" placeholder="Buscar por nome, setor ou ramal..."
-      class="w-full p-3 mb-8 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary" />
-
-    <div id="ramaisContainer" class="space-y-6">
-      <!-- Os ramais serão inseridos aqui -->
+    <div class="sticky top-0 bg-gray-100 py-3 z-10">
+      <input type="text" id="searchInput" placeholder="Buscar por nome, setor ou ramal..."
+        class="w-full p-3 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary" />
     </div>
+
+    <div id="ramaisContainer" class="space-y-6 mt-6"></div>
   </div>
+
+  <footer class="text-center text-sm text-gray-500 mt-10">
+    © 2025 DNA Laboratório. Todos os direitos reservados.
+  </footer>
+
+  <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' });"
+    class="fixed bottom-5 right-5 bg-primary text-white p-3 rounded-full shadow-lg hover:bg-blue-800">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
   <script>
     const setores = [
@@ -69,10 +88,10 @@
         setor: "Financeiro",
         ramais: [
           { numero: "7137", nome: "Rebeca" },
-          { numero: "7133", nome: "Rafaela" },
+          { numero: "7133", nome: "Rafaela" }
         ]
       },
-      { 
+      {
         setor: "PITUBA - Consultórios e Técnicos",
         ramais: [
           { numero: "7407", nome: "Assessoria médica" },
@@ -93,15 +112,13 @@
           { numero: "7550", nome: "Patologia - Coordenação" }
         ]
       },
-
       {
         setor: "RH",
         ramais: [
-          { numero: "7145" , nome: "Fernanda"},
-          { numero: "SN" , nome: "Carla"},
-          ]
+          { numero: "7145", nome: "Fernanda" },
+          { numero: "SN", nome: "Carla" }
+        ]
       },
-
       {
         setor: "PITUBA - Amazonas / Telefonia",
         ramais: [
@@ -136,9 +153,9 @@
         setor.ramais.forEach(r => {
           const linha = document.createElement("div");
           linha.className = "flex items-center text-sm text-gray-700 mb-2";
-          linha.innerHTML = r.numero.includes("SAC")
-            ? `<i class="fas fa-phone-alt text-secondary mr-2"></i><span>${r.numero} - ${r.nome}</span>`
-            : `<i class="fas fa-phone-alt text-secondary mr-2"></i><a href="sip:${r.numero}@192.168.200.236" class="font-medium hover:underline">${r.numero} - ${r.nome}</a>`;
+          linha.innerHTML = r.numero.includes("SAC") || r.numero === "SN"
+            ? `<i class=\"fas fa-phone-alt text-secondary mr-2\"></i><span>${r.numero} - ${r.nome}</span>`
+            : `<i class=\"fas fa-phone-alt text-secondary mr-2\"></i><a href=\"sip:${r.numero}@192.168.200.236\" class=\"font-medium hover:underline\">${r.numero} - ${r.nome}</a>`;
           card.appendChild(linha);
         });
 
