@@ -14,31 +14,28 @@
 </head>
 <body class="bg-black text-white font-sans">
 
-  <!-- Navbar Responsiva -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-black border-b border-orange-500 shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="#home" class="flex items-center">
-        <img src="imagens/banner.png" alt="Logo WilTalCode" class="h-10 max-w-[160px] brightness-[1.8] contrast-[1.4] saturate-150 drop-shadow-md" />
-      </a>
-      <button id="menu-toggle" class="md:hidden text-orange-500 text-2xl focus:outline-none" aria-label="Abrir menu">
-        <i class="fas fa-bars"></i>
-      </button>
-      <nav class="hidden md:flex space-x-6 text-sm">
-        <a href="#home" class="hover:text-orange-400">Home</a>
-        <a href="#servicos" class="hover:text-orange-400">Serviços</a>
-        <a href="#depoimentos" class="hover:text-orange-400">Depoimentos</a>
-        <a href="#acessos" class="hover:text-orange-400">Acessos</a>
-        <a href="#contato" class="hover:text-orange-400">Contato</a>
-      </nav>
-    </div>
-    <div id="mobile-menu" class="md:hidden hidden flex-col px-4 pb-4 bg-black text-sm space-y-2">
+  <!-- Navbar Responsiva SEM menu hamburguer -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-black border-b border-orange-500 shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between">
+    
+    <!-- Logo -->
+    <a href="#home" class="flex items-center mb-2 sm:mb-0">
+      <img src="imagens/banner.png" alt="Logo WilTalCode"
+        class="h-10 max-w-[160px] brightness-[1.8] contrast-[1.4] saturate-150 drop-shadow-md" />
+    </a>
+
+    <!-- Links SEM esconder -->
+    <nav class="flex flex-wrap gap-4 text-sm justify-center sm:justify-end w-full sm:w-auto">
       <a href="#home" class="hover:text-orange-400">Home</a>
       <a href="#servicos" class="hover:text-orange-400">Serviços</a>
       <a href="#depoimentos" class="hover:text-orange-400">Depoimentos</a>
       <a href="#acessos" class="hover:text-orange-400">Acessos</a>
       <a href="#contato" class="hover:text-orange-400">Contato</a>
-    </div>
-  </header>
+    </nav>
+
+  </div>
+</header>
+
 
   <main class="pt-24">
     <!-- Seção Home -->
@@ -51,7 +48,7 @@
     </section>
 
     <!-- Serviços -->
-    <section id="servicos" class="py-20 bg-gray-900">
+    <section id="servicos" class="scroll-mt-24 py-20 bg-gray-900">
       <div class="max-w-6xl mx-auto px-4">
         <h3 class="text-3xl font-bold text-orange-500 text-center mb-12">Serviços</h3>
         <div class="grid md:grid-cols-4 gap-8 text-center">
@@ -80,7 +77,7 @@
     </section>
 
     <!-- Depoimentos -->
-    <section id="depoimentos" class="py-20 bg-black">
+    <section id="depoimentos" class="scroll-mt-24 py-20 bg-black">
       <h3 class="text-3xl font-bold text-orange-500 text-center mb-12">Depoimentos</h3>
       <div class="relative max-w-xl mx-auto overflow-hidden">
         <div class="carousel flex transition-transform duration-700">
@@ -97,7 +94,7 @@
     </section>
 
     <!-- Acessos -->
-    <section id="acessos" class="py-20 bg-gray-900 text-center">
+    <section id="acessos" class="scroll-mt-24 py-20 bg-gray-900 text-center">
       <h3 class="text-3xl font-bold text-orange-500 mb-4">Acessos</h3>
       <p class="text-gray-400 mb-6">Área do cliente - insira seus dados para continuar.</p>
       <form action="dashboard.html" method="POST" class="max-w-md mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
@@ -114,7 +111,7 @@
     </section>
 
     <!-- Contato -->
-    <section id="contato" class="py-20 bg-black text-center">
+    <section id="contato" class="scroll-mt-24 py-20 bg-black text-center">
       <h3 class="text-3xl font-bold text-orange-500 mb-4">Contato</h3>
       <p class="text-gray-400">Entre em contato conosco por e-mail.</p>
       <div class="mt-4 text-sm">
