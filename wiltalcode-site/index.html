@@ -14,19 +14,21 @@
 </head>
 <body class="bg-black text-white font-sans">
 
-  <!-- Navbar Fixa -->
- <header class="fixed top-0 left-0 right-0 z-50 bg-black border-b border-orange-500 shadow-lg">
+ <!-- Navbar Responsiva -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-black border-b border-orange-500 shadow-lg">
   <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
     <!-- Logo -->
     <a href="#home" class="flex items-center">
-      <img 
-        src="imagens/banner.png" 
-        alt="Logo WilTalCode" 
-        class="h-14 w-auto max-w-[160px] brightness-[1.8] contrast-[1.4] saturate-150 drop-shadow-md"
-      />
+      <img src="imagens/banner.png" alt="Logo WilTalCode" class="h-10 max-w-[160px] brightness-[1.8] contrast-[1.4] saturate-150 drop-shadow-md" />
     </a>
-      
-      <nav class="space-x-6 text-sm">
+
+    <!-- Botão hamburguer mobile -->
+    <button id="menu-toggle" class="md:hidden text-orange-500 text-2xl focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Links de navegação -->
+    <nav id="nav-links" class="hidden md:flex space-x-6 text-sm">
       <a href="#home" class="hover:text-orange-400">Home</a>
       <a href="#servicos" class="hover:text-orange-400">Serviços</a>
       <a href="#depoimentos" class="hover:text-orange-400">Depoimentos</a>
@@ -34,7 +36,16 @@
       <a href="#contato" class="hover:text-orange-400">Contato</a>
     </nav>
   </div>
-  </header>
+
+  <!-- Menu mobile dropdown -->
+  <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 bg-black text-sm">
+    <a href="#home" class="block py-2 hover:text-orange-400">Home</a>
+    <a href="#servicos" class="block py-2 hover:text-orange-400">Serviços</a>
+    <a href="#depoimentos" class="block py-2 hover:text-orange-400">Depoimentos</a>
+    <a href="#acessos" class="block py-2 hover:text-orange-400">Acessos</a>
+    <a href="#contato" class="block py-2 hover:text-orange-400">Contato</a>
+  </div>
+</header>
 
   <main class="pt-24">
     <!-- Seção Home com CTA -->
@@ -145,5 +156,16 @@
       carousel.style.transform = `translateX(-${index * 100}%)`;
     }, 4000);
   </script>
+  
+  <!-- Script para abrir/fechar menu mobile -->
+<script>
+  const toggleBtn = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  toggleBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+
 </body>
 </html>
