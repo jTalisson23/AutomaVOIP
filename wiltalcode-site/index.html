@@ -14,41 +14,34 @@
 </head>
 <body class="bg-black text-white font-sans">
 
- <!-- Navbar Responsiva -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-black border-b border-orange-500 shadow-lg">
-  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-    <!-- Logo -->
-    <a href="#home" class="flex items-center">
-      <img src="imagens/banner.png" alt="Logo WilTalCode" class="h-10 max-w-[160px] brightness-[1.8] contrast-[1.4] saturate-150 drop-shadow-md" />
-    </a>
-
-    <!-- Botão hamburguer mobile -->
-    <button id="menu-toggle" class="md:hidden text-orange-500 text-2xl focus:outline-none">
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- Links de navegação -->
-    <nav id="nav-links" class="hidden md:flex space-x-6 text-sm">
+  <!-- Navbar Responsiva -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-black border-b border-orange-500 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#home" class="flex items-center">
+        <img src="imagens/banner.png" alt="Logo WilTalCode" class="h-10 max-w-[160px] brightness-[1.8] contrast-[1.4] saturate-150 drop-shadow-md" />
+      </a>
+      <button id="menu-toggle" class="md:hidden text-orange-500 text-2xl focus:outline-none" aria-label="Abrir menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="hidden md:flex space-x-6 text-sm">
+        <a href="#home" class="hover:text-orange-400">Home</a>
+        <a href="#servicos" class="hover:text-orange-400">Serviços</a>
+        <a href="#depoimentos" class="hover:text-orange-400">Depoimentos</a>
+        <a href="#acessos" class="hover:text-orange-400">Acessos</a>
+        <a href="#contato" class="hover:text-orange-400">Contato</a>
+      </nav>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden flex-col px-4 pb-4 bg-black text-sm space-y-2">
       <a href="#home" class="hover:text-orange-400">Home</a>
       <a href="#servicos" class="hover:text-orange-400">Serviços</a>
       <a href="#depoimentos" class="hover:text-orange-400">Depoimentos</a>
       <a href="#acessos" class="hover:text-orange-400">Acessos</a>
       <a href="#contato" class="hover:text-orange-400">Contato</a>
-    </nav>
-  </div>
-
-  <!-- Menu mobile dropdown -->
-  <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 bg-black text-sm">
-    <a href="#home" class="block py-2 hover:text-orange-400">Home</a>
-    <a href="#servicos" class="block py-2 hover:text-orange-400">Serviços</a>
-    <a href="#depoimentos" class="block py-2 hover:text-orange-400">Depoimentos</a>
-    <a href="#acessos" class="block py-2 hover:text-orange-400">Acessos</a>
-    <a href="#contato" class="block py-2 hover:text-orange-400">Contato</a>
-  </div>
-</header>
+    </div>
+  </header>
 
   <main class="pt-24">
-    <!-- Seção Home com CTA -->
+    <!-- Seção Home -->
     <section id="home" class="min-h-screen flex items-center justify-center bg-black text-center px-4">
       <div>
         <h2 class="text-5xl font-bold text-orange-500 mb-4">Bem-vindo à WilTalCode</h2>
@@ -86,7 +79,7 @@
       </div>
     </section>
 
-    <!-- Depoimentos com Imagens Pessoais -->
+    <!-- Depoimentos -->
     <section id="depoimentos" class="py-20 bg-black">
       <h3 class="text-3xl font-bold text-orange-500 text-center mb-12">Depoimentos</h3>
       <div class="relative max-w-xl mx-auto overflow-hidden">
@@ -104,24 +97,21 @@
     </section>
 
     <!-- Acessos -->
-   <section id="acessos" class="py-20 bg-gray-900 text-center">
-  <h3 class="text-3xl font-bold text-orange-500 mb-4">Acessos</h3>
-  <p class="text-gray-400 mb-6">Área do cliente - insira seus dados para continuar.</p>
-
-  <form action="dashboard.html" method="POST" class="max-w-md mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
-    <div class="mb-4 text-left">
-      <label for="login" class="block text-sm font-medium text-gray-300 mb-1">Login</label>
-      <input type="text" id="login" name="login" required class="w-full px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-orange-500" />
-    </div>
-    <div class="mb-6 text-left">
-      <label for="senha" class="block text-sm font-medium text-gray-300 mb-1">Senha</label>
-      <input type="password" id="senha" name="senha" required class="w-full px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-orange-500" />
-    </div>
-    <button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-2 rounded transition">
-      Entrar
-    </button>
-  </form>
-</section>
+    <section id="acessos" class="py-20 bg-gray-900 text-center">
+      <h3 class="text-3xl font-bold text-orange-500 mb-4">Acessos</h3>
+      <p class="text-gray-400 mb-6">Área do cliente - insira seus dados para continuar.</p>
+      <form action="dashboard.html" method="POST" class="max-w-md mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
+        <div class="mb-4 text-left">
+          <label for="login" class="block text-sm font-medium text-gray-300 mb-1">Login</label>
+          <input type="text" id="login" name="login" required class="w-full px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-orange-500" />
+        </div>
+        <div class="mb-6 text-left">
+          <label for="senha" class="block text-sm font-medium text-gray-300 mb-1">Senha</label>
+          <input type="password" id="senha" name="senha" required class="w-full px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-orange-500" />
+        </div>
+        <button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-2 rounded transition">Entrar</button>
+      </form>
+    </section>
 
     <!-- Contato -->
     <section id="contato" class="py-20 bg-black text-center">
@@ -143,7 +133,7 @@
   </footer>
 
   <!-- Botão WhatsApp Flutuante -->
-  <a href="https://wa.me/5500000000000" target="_blank" class="fixed bottom-5 right-5 bg-green-500 p-3 rounded-full shadow-lg hover:scale-110 transition">
+  <a href="https://wa.me/5500000000000" target="_blank" class="fixed bottom-5 right-5 bg-green-500 p-3 rounded-full shadow-lg hover:scale-110 transition z-50">
     <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-6 h-6" alt="WhatsApp" />
   </a>
 
@@ -152,20 +142,27 @@
     const carousel = document.querySelector('.carousel');
     let index = 0;
     setInterval(() => {
-      index = (index + 1) % 2; // quantidade de depoimentos
+      index = (index + 1) % 2;
       carousel.style.transform = `translateX(-${index * 100}%)`;
     }, 4000);
   </script>
-  
-  <!-- Script para abrir/fechar menu mobile -->
-<script>
-  const toggleBtn = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
 
-  toggleBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-  });
-</script>
+  <!-- Script para abrir/fechar menu mobile -->
+  <script>
+    const toggleBtn = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const links = mobileMenu.querySelectorAll('a');
+
+    toggleBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
 
 </body>
 </html>
